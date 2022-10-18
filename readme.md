@@ -1,0 +1,1 @@
+Barebones Notion OAuth integration in a Django app for PyNotion.com tutorial at https://www.pynotion.com/oauth-django.
