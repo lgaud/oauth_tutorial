@@ -27,12 +27,12 @@ def notion_redirect(request):
     client.parse_request_uri_response(url) # Extracts the code from the url
     
 	# Creates the URL, headers, and request body for the token request
-    request = client.prepare_token_request(token_url, url, redirect_uri)
+    token_request_params = client.prepare_token_request(token_url, url, redirect_uri)
 
 	# Makes a request for the token, authenticated with the client ID and secret
     auth = requests.auth.HTTPBasicAuth(
         settings.NOTION_CLIENT_ID, settings.NOTION_CLIENT_SECRET)
     response = requests.post(
-        request[0], headers=request[1], data=request[2], auth=auth)
+        token_request_params[0], headers=token_request_params[1], data=token_request_params[2], auth=auth)
 
     return HttpResponse(response)
