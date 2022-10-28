@@ -2,3 +2,4 @@ Django
 requests
 oauthlib
 python-dotenv
+django-encrypted-model-fields
