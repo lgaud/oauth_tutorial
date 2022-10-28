@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Notion Pages and Databases</h1>
+<p>The table below lists the first 100 pages and databases shared with this integration.</p>
+
+{% if error_message %}
+<p>{{error_message}}</p>
+{%endif%}
+
+{% for item in notion_objects %}
+{% if forloop.first %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Id</th>
+    </tr>
+{% endif %}
+    <tr>
+        <td><a href="{{item.url}}">{{item.title}}</a></td>
+        <td>{{item.id}}</td>
+    </tr>
+{% if forloop.last %}
+</table>
+{% endif %}
+{% empty %}
+<p>No shared objects found</p>
+{% endfor %}
+
+{% endblock content %}
